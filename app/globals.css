@@ -25,4 +25,16 @@
   .baropen3 {
     transform: rotate(315deg) translate(25%, -125%);
   }
+
+  .burgerMenuDefault {
+    /* set animation time */
+    transition: transform 0.5s ease-in-out;
+    /* set this to be outisde of the screen */
+    transform: translateX(110%);
+  }
+  .burgerOpen {
+    /* set animation time */
+    transition: transform 0.5s ease-in-out;
+    transform: translate(0%);
+  }
 }
