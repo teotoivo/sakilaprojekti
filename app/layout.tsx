@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen m-0 overflow-hidden">
         <Providers>
           <Header />
-          {children}
+          <main className="flex-1">{children}</main>
           <Footer />
 
           <BurgerMenu />

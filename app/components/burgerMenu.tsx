@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { change as changeBurgerState } from "../../store/slices/burgerSlice";
 import Link from "next/link";
+//uudi
+import { v4 as uuidv4 } from "uuid";
 
 async function getGenres(): Promise<Array<any>> {
   let res = await fetch("http://localhost:3000/api/db/categories");
@@ -18,7 +20,14 @@ export default function BurgerMenu() {
       setGenres(data);
     });
   }, []);
+
+  const [showGenres, setShowGenres] = useState(false);
   const burgerState = useSelector((state: any) => state.burger.state);
+  useEffect(() => {
+    if (!burgerState) {
+      setShowGenres(false);
+    }
+  }, [burgerState]);
   return (
     <div className="h-full w-full flex absolute justify-end">
       <div
@@ -32,15 +41,27 @@ export default function BurgerMenu() {
         <div>
           <ul>
             <li>
-              <button className="text-md">Movies</button>
+              <div>
+                <button
+                  onClick={() => {
+                    setShowGenres(!showGenres);
+                  }}
+                  className={`text-md duration-100 ${
+                    !showGenres ? "" : "rotate-90"
+                  }`}
+                >
+                  {">"}
+                </button>
+                <button className="text-md">Movies</button>
+              </div>
             </li>
           </ul>
         </div>
-        <div>
+        <div className={`${!showGenres ? "hidden" : ""}`}>
           <ul>
             {genres.map((genre) => {
               return (
-                <li key={genre.id}>
+                <li key={uuidv4()}>
                   <Link className="text-sm" href={`/genre/${genre.id}`}>
                     {genre.name}
                   </Link>

@@ -39,4 +39,12 @@
     transition: transform 0.5s ease-in-out;
     transform: translate(0%);
   }
+  .heroBanner {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      214deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
 }
