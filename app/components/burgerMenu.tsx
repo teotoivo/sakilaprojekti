@@ -14,6 +14,7 @@ async function getGenres(): Promise<Array<any>> {
 }
 
 export default function BurgerMenu() {
+  const [z, setZ] = useState("");
   let [genres, setGenres] = useState<Array<any>>([]);
   useEffect(() => {
     getGenres().then((data) => {
@@ -28,8 +29,18 @@ export default function BurgerMenu() {
       setShowGenres(false);
     }
   }, [burgerState]);
+  useEffect(() => {
+    if (burgerState) {
+      setZ("");
+    } else {
+      setTimeout(() => {
+        if (burgerState) return;
+        setZ("-z-10");
+      }, 300);
+    }
+  }, [burgerState]);
   return (
-    <div className="h-full w-full flex absolute justify-end">
+    <div className={`${z} h-full w-full flex absolute justify-end`}>
       <div
         className={`h-full min-w-burger px-4 shadow-lg bg-white ${
           burgerState ? "burgerOpen" : "burgerMenuDefault"

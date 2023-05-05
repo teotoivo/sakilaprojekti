@@ -27,7 +27,7 @@ export default function RootLayout({
         <title>{metadata.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="flex flex-col min-h-screen m-0 overflow-hidden">
+      <body className="flex flex-col min-h-screen m-0 overflow-x-hidden">
         <Providers>
           <Header />
           <main className="flex-1">{children}</main>

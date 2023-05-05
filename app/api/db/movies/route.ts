@@ -12,11 +12,16 @@ export async function GET(request: NextRequest) {
 
   connection.connect();
 
-  const pageSize = 1;
+  const pageSize = 20;
 
   const queryPromise = new Promise((resolve, reject) => {
+    if (searchParams.get("page") === null) {
+      searchParams.set("page", "0");
+    }
     connection.query(
-      "SELECT film_id, title, description, release_year, length, rating, special_features FROM film",
+      `SELECT film_id, title, description, release_year, length, rating, special_features FROM film LIMIT ${pageSize} OFFSET ${
+        Number(searchParams.get("page")) * pageSize
+      }`,
       function (error, results, fields) {
         if (error) {
           console.log("error: ", error);
@@ -27,6 +32,8 @@ export async function GET(request: NextRequest) {
       }
     );
   });
+
+  console.log("test");
 
   try {
     const results = await queryPromise;
