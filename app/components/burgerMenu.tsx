@@ -21,6 +21,10 @@ export default function BurgerMenu() {
       setGenres(data);
     });
   }, []);
+  const dispatch = useDispatch();
+  const toggleMenu = () => {
+    dispatch(changeBurgerState());
+  };
 
   const [showGenres, setShowGenres] = useState(false);
   const burgerState = useSelector((state: any) => state.burger.state);
@@ -41,6 +45,7 @@ export default function BurgerMenu() {
   }, [burgerState]);
   return (
     <div className={`${z} h-full w-full flex absolute justify-end`}>
+      <div className="w-full h-full" onClick={toggleMenu}></div>
       <div
         className={`h-full min-w-burger px-4 shadow-lg bg-white ${
           burgerState ? "burgerOpen" : "burgerMenuDefault"

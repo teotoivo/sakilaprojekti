@@ -42,12 +42,11 @@ export async function GET(request: NextRequest) {
   JOIN actor a ON fa.actor_id = a.actor_id
   JOIN film_category fc ON f.film_id = fc.film_id
   JOIN category c ON fc.category_id = c.category_id
-  WHERE (a.first_name LIKE '%${actor}%' OR a.last_name LIKE '%${actor}%')
+  WHERE (a.actor_id LIKE '%${actor}%')
     AND c.name LIKE '%${category}%'
   GROUP BY f.film_id
   LIMIT ${pageSize}
   OFFSET ${offset}
-  
     `;
 
     try {

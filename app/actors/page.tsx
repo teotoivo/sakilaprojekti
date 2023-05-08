@@ -2,21 +2,16 @@
 import { Waypoint } from "react-waypoint";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
-type movie = {
-  description: string;
-  film_id: number;
-  length: number;
-  rating: string;
-  release_year: number;
-  special_features: string;
-  title: string;
-  actor_names: string;
-  category: string;
+type actor = {
+  first_name: string;
+  last_name: string;
+  actor_id: number;
 };
 
 export default function Page() {
-  const [actors, setActors] = useState<Array<movie>>([]);
+  const [actors, setActors] = useState<Array<actor>>([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -50,19 +45,15 @@ export default function Page() {
 
   return (
     <div className="flex flex-wrap gap-4">
-      {actors.map((movie: movie) => {
+      {actors.map((actor: actor) => {
         return (
-          <div key={movie.title} className="w-52 bg-slate-400 rounded-lg p-3">
-            <h1>{movie.title}</h1>
-            <div className="text-sm">
-              <p>Rating: {movie.rating}</p>
-              <p>Release year: {movie.release_year}</p>
-              <p>Length: {movie.length}</p>
-              <p>Description: {movie.description}</p>
-              <p>Category: {movie.category}</p>
-              <p>Actor: {movie.actor_names}</p>
-            </div>
-          </div>
+          <Link
+            href={`/movies?actor=${actor.actor_id}`}
+            key={actor.first_name}
+            className="w-52 bg-slate-400 rounded-lg p-3"
+          >
+            <h1>{actor.first_name + " " + actor.last_name}</h1>
+          </Link>
         );
       })}
       <Waypoint
