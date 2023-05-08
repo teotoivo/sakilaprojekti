@@ -16,41 +16,31 @@ type movie = {
 };
 
 export default function Page() {
-  const [movies, setMovies] = useState<Array<movie>>([]);
+  const [actors, setActors] = useState<Array<movie>>([]);
   const [page, setPage] = useState(1);
 
-  const searchParams = useSearchParams();
-
   useEffect(() => {
-    const category = searchParams.get("category");
-    const actor = searchParams.get("actor");
-    const url = `http://localhost:3000/api/db/movies?page=0${
-      category ? `&category=${category}` : ""
-    }${actor ? `&actor=${actor}` : ""}`;
+    const url = `http://localhost:3000/api/db/actors?page=0`;
 
     try {
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
-          setMovies(data);
+          setActors(data);
         });
     } catch (e: any) {
       console.error(e.message);
     }
-  }, [searchParams]);
+  }, []);
 
   async function loadMore() {
-    const category = searchParams.get("category");
-    const actor = searchParams.get("actor");
-    const url = `http://localhost:3000/api/db/movies?page=${page}${
-      category ? `&category=${category}` : ""
-    }${actor ? `&actor=${actor}` : ""}`;
+    const url = `http://localhost:3000/api/db/actors?page=${page}`;
 
     try {
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
-          setMovies([...movies, ...data]);
+          setActors([...actors, ...data]);
         });
       setPage(page + 1);
     } catch (e: any) {
@@ -60,7 +50,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-wrap gap-4">
-      {movies.map((movie: movie) => {
+      {actors.map((movie: movie) => {
         return (
           <div key={movie.title} className="w-52 bg-slate-400 rounded-lg p-3">
             <h1>{movie.title}</h1>

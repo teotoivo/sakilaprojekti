@@ -63,7 +63,14 @@ export default function BurgerMenu() {
                 >
                   {">"}
                 </button>
-                <button className="text-md">Movies</button>
+                <Link href={"/movies"} className="text-md">
+                  Movies
+                </Link>
+              </div>
+              <div>
+                <Link href={"/actors"} className="text-md">
+                  Actors
+                </Link>
               </div>
             </li>
           </ul>
@@ -73,7 +80,10 @@ export default function BurgerMenu() {
             {genres.map((genre) => {
               return (
                 <li key={uuidv4()}>
-                  <Link className="text-sm" href={`/genre/${genre.id}`}>
+                  <Link
+                    className="text-sm"
+                    href={`movies?category=${genre.name}`}
+                  >
                     {genre.name}
                   </Link>
                 </li>
