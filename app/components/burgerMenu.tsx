@@ -52,7 +52,7 @@ export default function BurgerMenu() {
         }`}
       >
         <div className="h-[63px] flex items-center">
-          <p className="font-bold text-lg">Menu</p>
+          <p className="font-bold text-lg font-header">Menu</p>
         </div>
         <div>
           <ul>
@@ -68,12 +68,12 @@ export default function BurgerMenu() {
                 >
                   {">"}
                 </button>
-                <Link href={"/movies"} className="text-md">
+                <Link href={"/movies"} className="text-md font-header">
                   Movies
                 </Link>
               </div>
               <div>
-                <Link href={"/actors"} className="text-md">
+                <Link href={"/actors"} className="text-md font-header">
                   Actors
                 </Link>
               </div>

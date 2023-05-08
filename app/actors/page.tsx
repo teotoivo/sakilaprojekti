@@ -50,7 +50,7 @@ export default function Page() {
           <Link
             href={`/movies?actor=${actor.actor_id}`}
             key={actor.first_name}
-            className="w-52 bg-slate-400 rounded-lg p-3"
+            className="w-52 rounded-lg p-3 font-header bg-sak-blue"
           >
             <h1>{actor.first_name + " " + actor.last_name}</h1>
           </Link>

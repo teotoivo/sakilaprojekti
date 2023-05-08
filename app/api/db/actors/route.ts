@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
 
   connection.connect();
 
-  const pageSize = 20;
+  const pageSize = 40;
 
   const queryPromise = new Promise((resolve, reject) => {
     const page = searchParams.get("page") || "0";
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
 
     //
     const query = `
-    SELECT first_name, last_name, actor_id FROM actor ORDER BY first_name
+    SELECT first_name, last_name, actor_id FROM actor ORDER BY first_name LIMIT ${pageSize} OFFSET ${offset}
     `;
 
     try {

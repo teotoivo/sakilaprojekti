@@ -6,6 +6,10 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ["Lato", "sans-serif"],
+    },
+
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -17,6 +21,16 @@ module.exports = {
       },
       maxWidth: {
         burger: "30rem",
+      },
+      fontFamily: {
+        header: ["Teko", "sans-serif"],
+      },
+      backgroundColor: {
+        sak: {
+          blue: "#20aad8",
+          red: "#92010c",
+          black: "#373435",
+        },
       },
     },
   },

@@ -1,8 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap");
 
 @layer utilities {
+  html {
+    color: #373435;
+  }
   .bar1,
   .bar2,
   .bar3 {

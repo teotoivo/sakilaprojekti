@@ -12,10 +12,10 @@ export default function Header() {
   };
   const burgerState = useSelector((state: any) => state.burger.state);
   return (
-    <header className="p-3 h-[64px] flex flex-row w-full bg-slate-950">
+    <header className="p-3 h-[64px] flex flex-row w-full bg-sak-red">
       <div className="flex flex-row w-full justify-center">
         <div className="flex flex-1 h-full items-center">
-          <p className="text-white">sakila oy {burgerState}</p>
+          <p className="text-white font-header">sakila oy</p>
         </div>
         <div className="flex-1 flex flex-row justify-end z-50">
           <div
