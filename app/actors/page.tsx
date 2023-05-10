@@ -44,13 +44,13 @@ export default function Page() {
   }
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-4 ">
       {actors.map((actor: actor) => {
         return (
           <Link
             href={`/movies?actor=${actor.actor_id}`}
             key={actor.first_name}
-            className="w-52 rounded-lg p-3 font-header bg-sak-blue"
+            className="rounded-lg p-3 font-header w-1/5 bg-sak-blue"
           >
             <h1>{actor.first_name + " " + actor.last_name}</h1>
           </Link>
